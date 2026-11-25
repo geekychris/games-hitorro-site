@@ -1,0 +1,105 @@
+/* Hitorro Games: a night sky and an engraved gold bull, as in the games' opening splash.
+   One dark look on purpose: the sky is the brand. */
+:root {
+  --night: #070a17;
+  --night-2: #0d1226;
+  --panel: #121833;
+  --line: #2a3156;
+  --ink: #e9e4d6;
+  --muted: #a7a4b8;
+  --gold: #e2b04a;
+  --gold-deep: #b8822a;
+  --display: "IM Fell English SC", "Iowan Old Style", Georgia, serif;
+  --body: "Spectral", "Iowan Old Style", Georgia, serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--night); }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--ink);
+  font: 18px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; }
+b { font-weight: 600; color: #fff6e0; }
+a { color: var(--gold); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* The hero: the splash's sky, the bull, the name in engraved capitals. */
+.hero {
+  background: radial-gradient(ellipse at 50% 38%, rgba(226, 176, 74, .14), transparent 55%),
+              url("/img/sky.webp") center / cover no-repeat, var(--night);
+  padding-block: clamp(48px, 9vw, 96px) clamp(40px, 7vw, 72px);
+  padding-inline: 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.hero-inner { max-width: 760px; margin: 0 auto; display: grid; justify-items: center; gap: 10px; }
+.bull {
+  width: clamp(150px, 30vw, 260px);
+  filter: drop-shadow(0 0 28px rgba(226, 176, 74, .28)) drop-shadow(0 6px 18px rgba(0, 0, 0, .6));
+  animation: rise 1.4s ease-out both;
+}
+h1 {
+  margin: 6px 0 0;
+  font: 400 clamp(38px, 8vw, 72px)/1 var(--display);
+  letter-spacing: .14em;
+  text-indent: .14em;
+  color: var(--gold);
+  background: linear-gradient(180deg, #f7dc8e 0%, var(--gold) 45%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-wrap: balance;
+}
+.motto { margin: 4px 0 0; color: var(--muted); font-style: italic; font-size: clamp(17px, 2.4vw, 21px); }
+
+@keyframes rise {
+  from { opacity: .35; transform: translateY(10px) scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .bull { animation: none; } }
+
+main { max-width: 1080px; margin: 0 auto; padding-inline: 16px; padding-block: 48px 24px; display: grid; gap: 56px; }
+
+.intro { max-width: 680px; margin: 0 auto; font-size: clamp(18px, 2.2vw, 20px); }
+.intro p { margin: 0 0 14px; }
+
+/* A shelf of games: a gold rule with the shelf's name set into it. */
+.shelf { display: grid; gap: 22px; }
+.shelf h2 {
+  display: flex; align-items: center; gap: 18px; margin: 0;
+  font: 400 clamp(26px, 4vw, 34px)/1.1 var(--display);
+  letter-spacing: .08em; color: var(--gold);
+}
+.shelf h2::before, .shelf h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-deep), transparent); }
+.shelf-note { margin: -8px auto 0; max-width: 680px; text-align: center; color: var(--muted); }
+
+.games { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px; }
+.game {
+  display: flex; flex-direction: column; min-width: 0;
+  background: linear-gradient(180deg, var(--panel), var(--night-2));
+  border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+}
+.game img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-bottom: 1px solid var(--line); }
+.game .body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.game p { margin: 0; }
+.kicker { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.game h3 { margin: 0; font: 400 clamp(26px, 3.4vw, 32px)/1.15 var(--display); letter-spacing: .03em; color: #fff6e0; text-wrap: balance; }
+.tagline { font-style: italic; color: var(--muted); }
+.meta { margin-top: auto !important; padding-top: 10px; font-size: 15px; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.status {
+  font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--night); background: var(--gold); padding: 2px 9px; border-radius: 99px; font-weight: 600;
+}
+
+footer {
+  max-width: 1080px; margin: 32px auto 0; padding-inline: 16px; padding-block: 28px 40px;
+  border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 15px;
+  display: grid; justify-items: center; gap: 6px;
+}
+footer p { margin: 0; }
+footer .fine { font-size: 13px; max-width: 560px; }
