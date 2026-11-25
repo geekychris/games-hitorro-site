@@ -96,6 +96,26 @@ main { max-width: 1080px; margin: 0 auto; padding-inline: 16px; padding-block: 4
   color: var(--night); background: var(--gold); padding: 2px 9px; border-radius: 99px; font-weight: 600;
 }
 
+/* A featured game: the full shelf width, with a gallery of screenshots under its text. */
+.game.feature { grid-column: 1 / -1; }
+/* the painting as a wide banner, framed on the starfighter and the fortress */
+.game.feature > img { aspect-ratio: 16 / 7; object-position: 50% 72%; }
+@media (min-width: 900px) {
+  .game.feature .body { padding: 24px 30px 24px; }
+  .game.feature .body > p:not(.kicker):not(.tagline):not(.meta) { max-width: 780px; }
+}
+.gallery {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 14px;
+  padding: 4px 22px 22px; border-top: 1px solid var(--line); padding-top: 18px;
+}
+.gallery figure { margin: 0; display: grid; gap: 6px; }
+.gallery img {
+  display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+  border: 1px solid var(--line); border-radius: 4px; border-bottom: 1px solid var(--line);
+  image-rendering: pixelated;   /* the screenshots are pixel art at twice size */
+}
+.gallery figcaption { font-size: 14px; line-height: 1.35; color: var(--muted); }
+
 footer {
   max-width: 1080px; margin: 32px auto 0; padding-inline: 16px; padding-block: 28px 40px;
   border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 15px;
